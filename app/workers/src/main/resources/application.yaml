@@ -1,0 +1,10 @@
+server.port: 8081
+
+itau:
+  components:
+    camunda-external-task:
+      connection:
+        base-url: "http://localhost:8080"
+        lock-duration: 30s
+        async-timeout: 2s
+        max-retries: 1
