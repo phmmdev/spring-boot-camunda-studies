@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1u450bh" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
+  <bpmn:process id="Process_0oz816y" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1e8buuu</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0eus4dm">
+      <bpmn:incoming>Flow_1shvoh0</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1e8buuu" sourceRef="StartEvent_1" targetRef="EnvioDadosAnalise" />
+    <bpmn:sequenceFlow id="Flow_1shvoh0" sourceRef="EnvioDadosAnalise" targetRef="Event_0eus4dm" />
+    <bpmn:serviceTask id="EnvioDadosAnalise" name="Enviar dados para análise" camunda:type="external" camunda:topic="pedidos_analise">
+      <bpmn:incoming>Flow_1e8buuu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1shvoh0</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0oz816y">
+      <bpmndi:BPMNEdge id="Flow_1e8buuu_di" bpmnElement="Flow_1e8buuu">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="340" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1shvoh0_di" bpmnElement="Flow_1shvoh0">
+        <di:waypoint x="440" y="117" />
+        <di:waypoint x="582" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0eus4dm_di" bpmnElement="Event_0eus4dm">
+        <dc:Bounds x="582" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03r5qo3_di" bpmnElement="EnvioDadosAnalise">
+        <dc:Bounds x="340" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
