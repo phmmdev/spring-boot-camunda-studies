@@ -1,0 +1,36 @@
+package process.server.service;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import process.server.model.Person;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+@Service
+public class StartProcessDemoService
+{
+    private final RuntimeService runtimeService;
+    private final ObjectMapper objectMapper;
+
+    @Autowired
+    public StartProcessDemoService(RuntimeService runtimeService, ObjectMapper objectMapper) {
+        this.runtimeService = runtimeService;
+        this.objectMapper = objectMapper;
+    }
+
+    @SneakyThrows
+    public void startProcess(Person person)
+    {
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put("person", objectMapper.writeValueAsString(person));
+        runtimeService.startProcessInstanceById("address-recovery", variables);
+    }
+}

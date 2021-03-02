@@ -9,20 +9,20 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1e8buuu" sourceRef="StartEvent_1" targetRef="EnvioDadosAnalise" />
     <bpmn:sequenceFlow id="Flow_1shvoh0" sourceRef="EnvioDadosAnalise" targetRef="Event_0eus4dm" />
-    <bpmn:serviceTask id="EnvioDadosAnalise" name="Enviar dados para análise" camunda:type="external" camunda:topic="pedidos_analise">
+    <bpmn:serviceTask id="EnvioDadosAnalise" name="Enviar dados para análise" camunda:delegateExpression="">
       <bpmn:incoming>Flow_1e8buuu</bpmn:incoming>
       <bpmn:outgoing>Flow_1shvoh0</bpmn:outgoing>
     </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="AnaliseDados">
-      <bpmndi:BPMNEdge id="Flow_1e8buuu_di" bpmnElement="Flow_1e8buuu">
-        <di:waypoint x="215" y="117" />
-        <di:waypoint x="340" y="117" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1shvoh0_di" bpmnElement="Flow_1shvoh0">
         <di:waypoint x="440" y="117" />
         <di:waypoint x="582" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e8buuu_di" bpmnElement="Flow_1e8buuu">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="340" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="99" width="36" height="36" />

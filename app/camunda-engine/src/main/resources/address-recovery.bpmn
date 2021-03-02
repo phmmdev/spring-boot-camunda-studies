@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1mdzadw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
+  <bpmn:process id="address-recovery" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1a5c4ft</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1a5c4ft" sourceRef="StartEvent_1" targetRef="address-recover-process" />
+    <bpmn:callActivity id="address-recover-process" name="Address Recover Process" camunda:asyncBefore="true" calledElement="address-worker" camunda:variableMappingClass="process.server.delegate.PostCodeVariableMapping">
+      <bpmn:incoming>Flow_1a5c4ft</bpmn:incoming>
+      <bpmn:outgoing>Flow_1v38vqv</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_1v38vqv" sourceRef="address-recover-process" targetRef="aggregate-information" />
+    <bpmn:endEvent id="Event_08rw9lo">
+      <bpmn:incoming>Flow_0dboul3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0dboul3" sourceRef="aggregate-information" targetRef="Event_08rw9lo" />
+    <bpmn:serviceTask id="aggregate-information" name="Aggregate Information" camunda:asyncBefore="true" camunda:class="process.server.delegate.AggregateInformationDelegate">
+      <bpmn:incoming>Flow_1v38vqv</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dboul3</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="address-recovery">
+      <bpmndi:BPMNEdge id="Flow_1a5c4ft_di" bpmnElement="Flow_1a5c4ft">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1v38vqv_di" bpmnElement="Flow_1v38vqv">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="450" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dboul3_di" bpmnElement="Flow_0dboul3">
+        <di:waypoint x="550" y="117" />
+        <di:waypoint x="632" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1s4ikf3_di" bpmnElement="address-recover-process">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_08rw9lo_di" bpmnElement="Event_08rw9lo">
+        <dc:Bounds x="632" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_178vmgq_di" bpmnElement="aggregate-information">
+        <dc:Bounds x="450" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
