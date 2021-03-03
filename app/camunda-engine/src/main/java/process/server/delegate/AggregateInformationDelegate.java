@@ -10,6 +10,7 @@ public class AggregateInformationDelegate implements JavaDelegate
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception
     {
-
+        String person =  (String) delegateExecution.getVariable("person");
+        String recoveredAdress = (String) delegateExecution.getVariable("recovered-address");
     }
 }

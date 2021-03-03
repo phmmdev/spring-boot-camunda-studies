@@ -6,6 +6,10 @@ public class Person
     private int age;
     private String postCode;
 
+    public Person()
+    {
+    }
+
     public Person(String name, int age, String postCode)
     {
         this.name = name;
@@ -26,5 +30,20 @@ public class Person
     public String getPostCode()
     {
         return postCode;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
+
+    public void setPostCode(String postCode)
+    {
+        this.postCode = postCode;
     }
 }

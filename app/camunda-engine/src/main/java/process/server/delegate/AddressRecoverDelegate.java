@@ -13,8 +13,8 @@ public class AddressRecoverDelegate implements JavaDelegate
     {
         String postCode = (String) delegateExecution.getVariable("post-code");
         if(postCode.equals("03044000"))
-            delegateExecution.setVariable("recovered-address", new Address("SP", "São Paulo", "rua Visconde de Parnaíba - Brás" ));
+            delegateExecution.setVariable("recovered-address", (new Address("SP", "São Paulo", "rua Visconde de Parnaíba - Brás" )).toString();
         else
-            delegateExecution.setVariable("recovered-address", new Address("SP", "São Paulo", "rua Dona Ana Neri - Mooca" ));
+            delegateExecution.setVariable("recovered-address", (new Address("SP", "São Paulo", "rua Dona Ana Neri - Mooca" )).toString());
     }
 }

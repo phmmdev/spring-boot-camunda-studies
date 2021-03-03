@@ -6,6 +6,10 @@ public class Address
     private String city;
     private String street;
 
+    public Address()
+    {
+    }
+
     public Address(String state, String city, String street)
     {
         this.state = state;
