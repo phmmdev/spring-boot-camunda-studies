@@ -12,11 +12,17 @@ import process.server.model.Person;
 @Component
 public class PostCodeVariableMapping implements DelegateVariableMapping
 {
+    private final ObjectMapper objectMapper;
+
+    public PostCodeVariableMapping(ObjectMapper objectMapper)
+    {
+        this.objectMapper = objectMapper;
+    }
+
     @SneakyThrows
     @Override
     public void mapInputVariables(DelegateExecution delegateExecution, VariableMap variableMap)
     {
-        ObjectMapper objectMapper = new ObjectMapper();
         final Person person = objectMapper.readValue((String) delegateExecution.getVariable("person"), Person.class);
         variableMap.putValue("post-code", person.getPostCode());
     }

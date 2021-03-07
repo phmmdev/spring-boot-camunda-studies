@@ -17,13 +17,20 @@ import java.util.UUID;
 @Service
 public class StartProcessDemoService
 {
+    private final RuntimeService runtimeService;
+    private final ObjectMapper objectMapper;
+
     @Autowired
-    private RuntimeService runtimeService;
+    public StartProcessDemoService(RuntimeService runtimeService, ObjectMapper objectMapper)
+    {
+        this.runtimeService = runtimeService;
+        this.objectMapper = objectMapper;
+    }
 
     @SneakyThrows
     public void startProcess(Person person)
     {
-        ObjectMapper objectMapper =  new ObjectMapper();
+        //ObjectMapper objectMapper =  new ObjectMapper();
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("person", objectMapper.writeValueAsString(person));
         runtimeService.startProcessInstanceByKey("address-recovery", variables);

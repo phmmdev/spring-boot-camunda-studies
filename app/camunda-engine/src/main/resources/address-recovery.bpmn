@@ -10,28 +10,37 @@
       <bpmn:outgoing>Flow_1v38vqv</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:sequenceFlow id="Flow_1v38vqv" sourceRef="address-recover-process" targetRef="aggregate-information" />
-    <bpmn:endEvent id="Event_08rw9lo">
-      <bpmn:incoming>Flow_0dboul3</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0dboul3" sourceRef="aggregate-information" targetRef="Event_08rw9lo" />
     <bpmn:serviceTask id="aggregate-information" name="Aggregate Information" camunda:asyncBefore="true" camunda:class="process.server.delegate.AggregateInformationDelegate">
       <bpmn:incoming>Flow_1v38vqv</bpmn:incoming>
-      <bpmn:outgoing>Flow_0dboul3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0sav0zc</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0sav0zc" sourceRef="aggregate-information" targetRef="Activity_10lmocc" />
+    <bpmn:endEvent id="Event_0u3khe7">
+      <bpmn:incoming>Flow_02134b9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_02134b9" sourceRef="Activity_10lmocc" targetRef="Event_0u3khe7" />
+    <bpmn:userTask id="Activity_10lmocc" name="Approve Step">
+      <bpmn:incoming>Flow_0sav0zc</bpmn:incoming>
+      <bpmn:outgoing>Flow_02134b9</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="address-recovery">
-      <bpmndi:BPMNEdge id="Flow_1a5c4ft_di" bpmnElement="Flow_1a5c4ft">
-        <di:waypoint x="215" y="117" />
-        <di:waypoint x="270" y="117" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1v38vqv_di" bpmnElement="Flow_1v38vqv">
         <di:waypoint x="370" y="117" />
         <di:waypoint x="450" y="117" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0dboul3_di" bpmnElement="Flow_0dboul3">
+      <bpmndi:BPMNEdge id="Flow_1a5c4ft_di" bpmnElement="Flow_1a5c4ft">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sav0zc_di" bpmnElement="Flow_0sav0zc">
         <di:waypoint x="550" y="117" />
-        <di:waypoint x="632" y="117" />
+        <di:waypoint x="640" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02134b9_di" bpmnElement="Flow_02134b9">
+        <di:waypoint x="740" y="117" />
+        <di:waypoint x="832" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="99" width="36" height="36" />
@@ -39,11 +48,14 @@
       <bpmndi:BPMNShape id="Activity_1s4ikf3_di" bpmnElement="address-recover-process">
         <dc:Bounds x="270" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_08rw9lo_di" bpmnElement="Event_08rw9lo">
-        <dc:Bounds x="632" y="99" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_178vmgq_di" bpmnElement="aggregate-information">
         <dc:Bounds x="450" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0u3khe7_di" bpmnElement="Event_0u3khe7">
+        <dc:Bounds x="832" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03qc17m_di" bpmnElement="Activity_10lmocc">
+        <dc:Bounds x="640" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
